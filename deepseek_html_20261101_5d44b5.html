@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نور السنة | مشروع دعوي في الحديث الشريف</title>
+<meta name="description" content="مشروع دعوي موجّه للشباب الجامعي، يقدّم الأحاديث الصحيحة بأسلوب عملي، مع بيان المنهجية والمصادر.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============ الأساسيات ============ */
+*{box-sizing:border-box}
+:root{
+  --green:#0f3d2e;
+  --green-2:#155340;
+  --green-3:#0a2b20;
+  --sand:#f7f1e4;
+  --sand-2:#efe6d2;
+  --gold:#c9a227;
+  --gold-2:#e2c05a;
+  --ink:#1e2a25;
+  --muted:#6a7a72;
+  --card:#ffffff;
+  --line:#e7dcc6;
+  --radius:18px;
+  --shadow:0 10px 30px rgba(15,61,46,.08);
+}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{
+  margin:0;
+  font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--sand);
+  color:var(--ink);
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+.container{width:min(1120px,100% - 40px);margin-inline:auto}
+h1,h2,h3,h4{font-family:'Amiri',serif;line-height:1.35;margin:0 0 .5em;font-weight:700}
+p{margin:0 0 1em}
+a{color:inherit}
+blockquote{margin:1em 0;padding:0}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+/* ============ الهيدر ============ */
+.site-header{
+  position:sticky;top:0;z-index:60;
+  background:rgba(247,241,228,.88);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--green)}
+.brand-mark{
+  width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--green-2),var(--green));
+  color:var(--gold-2);font-family:'Amiri',serif;font-size:25px;
+  box-shadow:0 6px 16px rgba(15,61,46,.25);
+}
+.brand-text{display:flex;flex-direction:column;font-weight:700;font-size:18px;line-height:1.25}
+.brand-text small{font-weight:400;font-size:11.5px;color:var(--muted);letter-spacing:.3px}
+
+.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.nav a{
+  display:block;padding:8px 13px;border-radius:999px;text-decoration:none;
+  font-size:15px;font-weight:500;transition:background .25s,color .25s;
+}
+.nav a:hover,.nav a.active{background:var(--green);color:#fff}
+
+.nav-toggle{
+  display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);
+  background:#fff;cursor:pointer;padding:0;place-items:center;
+}
+.nav-toggle span{display:block;width:20px;height:2px;background:var(--green);margin:3px auto;transition:.3s;border-radius:2px}
+
+@media (max-width:880px){
+  .nav-toggle{display:grid}
+  .nav{
+    position:absolute;inset-inline:20px;top:calc(100% + 8px);
+    background:#fff;border:1px solid var(--line);border-radius:16px;
+    box-shadow:var(--shadow);padding:8px;display:none;
+  }
+  .site-header.nav-open .nav{display:block}
+  .nav ul{flex-direction:column;gap:2px}
+  .nav a{padding:11px 14px;border-radius:10px}
+}
+
+/* ============ الهيرو ============ */
+.hero{
+  position:relative;overflow:hidden;color:#f2f7f4;
+  padding:88px 0 76px;
+  background:
+    radial-gradient(1200px 620px at 82% -12%, #1d6a50, transparent 62%),
+    linear-gradient(160deg,var(--green) 0%, var(--green-3) 100%);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    radial-gradient(circle at 12% 22%, rgba(201,162,39,.20), transparent 42%),
+    radial-gradient(circle at 88% 78%, rgba(201,162,39,.13), transparent 40%);
+}
+.hero-inner{position:relative;z-index:1;max-width:840px;text-align:center}
+.badge{
+  display:inline-block;padding:6px 16px;border-radius:999px;font-size:13.5px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(226,192,90,.45);
+  color:var(--gold-2);margin-bottom:20px;letter-spacing:.3px;
+}
+.hero h1{
+  font-size:clamp(36px,6vw,66px);margin-bottom:16px;
+  color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.18);
+}
+.hero h1 em{font-style:normal;color:var(--gold-2)}
+.hero .lead{font-size:clamp(15px,2vw,18.5px);color:#d8e6df;max-width:640px;margin:0 auto 28px}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:38px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;
+  text-decoration:none;font-weight:700;font-size:15.5px;border:1px solid transparent;
+  transition:transform .2s, box-shadow .2s, background .2s;cursor:pointer;font-family:inherit;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:linear-gradient(150deg,var(--gold-2),var(--gold));color:#3a2c05;box-shadow:0 10px 24px rgba(201,162,39,.32)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.32)}
+.btn-green{background:var(--green);color:#fff;box-shadow:0 10px 22px rgba(15,61,46,.22)}
+
+.hero-hadith{
+  margin:0 auto;max-width:720px;padding:24px 26px;border-radius:var(--radius);
+  background:rgba(255,255,255,.07);border:1px solid rgba(226,192,90,.35);
+  backdrop-filter:blur(4px);
+}
+.hero-hadith blockquote{
+  font-family:'Amiri',serif;font-size:clamp(18px,2.6vw,25px);
+  color:#fff;line-height:1.7;margin:0 0 10px;
+}
+.hero-hadith figcaption{font-size:13.5px;color:var(--gold-2)}
+
+/* ============ الأقسام ============ */
+.section{padding:78px 0}
+.section-alt{background:linear-gradient(180deg,#fffdf8,var(--sand-2))}
+.section-head{text-align:center;max-width:660px;margin:0 auto 44px}
+.kicker{
+  display:inline-block;font-size:13px;font-weight:700;letter-spacing:1.5px;
+  color:var(--gold);margin-bottom:10px;
+}
+.section-head h2{font-size:clamp(26px,4vw,38px);color:var(--green)}
+.section-head p{color:var(--muted);margin:0}
+
+/* شبكة البطاقات */
+.grid{display:grid;gap:20px}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 24px;box-shadow:var(--shadow);position:relative;
+  transition:transform .3s, box-shadow .3s, border-color .3s;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(15,61,46,.13);border-color:#d9cba9}
+.card h3{font-size:21px;color:var(--green);margin-bottom:8px}
+.card p{color:var(--muted);font-size:15.3px;margin-bottom:0}
+.icon{
+  width:48px;height:48px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(150deg,#f3e9cf,#e9dbba);color:var(--green);
+  font-family:'Amiri',serif;font-size:22px;margin-bottom:16px;
+}
+
+/* شارات الإحصاء */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:34px}
+.stat{
+  background:rgba(255,255,255,.62);border:1px solid var(--line);border-radius:14px;
+  padding:16px;text-align:center;
+}
+.stat b{display:block;font-family:'Amiri',serif;font-size:26px;color:var(--green)}
+.stat span{font-size:13px;color:var(--muted)}
+
+/* ============ السلسلة ============ */
+.filters{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:32px}
+.chip{
+  font-family:inherit;font-size:14.5px;font-weight:500;cursor:pointer;
+  padding:9px 18px;border-radius:999px;border:1px solid var(--line);
+  background:#fff;color:var(--ink);transition:.25s;
+}
+.chip:hover{border-color:var(--gold)}
+.chip.is-active{background:var(--green);color:#fff;border-color:var(--green)}
+
+.post{display:flex;flex-direction:column}
+.post-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.num{
+  width:42px;height:42px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--gold-2),var(--gold));color:#3a2c05;
+  font-family:'Amiri',serif;font-size:20px;font-weight:700;
+  box-shadow:0 6px 14px rgba(201,162,39,.3);
+}
+.tag{
+  font-size:12.5px;padding:4px 12px;border-radius:999px;
+  background:#f2ebd8;color:#7a6520;border:1px solid #e6d9b4;
+}
+.post h3{font-size:20px}
+.post .excerpt{color:var(--muted);font-size:15px;flex:1}
+.link-btn{
+  margin-top:18px;align-self:flex-start;background:none;border:none;padding:0;
+  font-family:inherit;font-size:15px;font-weight:700;color:var(--green);
+  cursor:pointer;border-bottom:2px solid transparent;transition:.25s;
+}
+.link-btn:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ============ المودال ============ */
+.modal{
+  position:fixed;inset:0;z-index:100;display:none;
+  background:rgba(10,43,32,.55);backdrop-filter:blur(4px);
+  padding:24px;overflow-y:auto;
+}
+.modal.open{display:grid;place-items:center}
+.modal-box{
+  position:relative;width:min(640px,100%);background:#fff;border-radius:20px;
+  padding:34px 28px;border-top:5px solid var(--gold);
+  box-shadow:0 30px 70px rgba(0,0,0,.35);animation:pop .25s ease-out;
+}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.modal-close{
+  position:absolute;top:12px;inset-inline-start:14px;
+  width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
+  background:#faf6ec;font-size:22px;line-height:1;cursor:pointer;color:var(--green);
+}
+.modal-close:hover{background:#f1e7cf}
+.modal-body h3{color:var(--green);font-size:24px;margin-bottom:14px}
+.modal-body blockquote{
+  font-family:'Amiri',serif;font-size:19.5px;line-height:1.9;color:var(--green-2);
+  background:#f8f3e6;border-inline-start:4px solid var(--gold);
+  padding:14px 18px;border-radius:12px;margin:14px 0;
+}
+.modal-body .src{font-size:13.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.modal-body ul{padding-inline-start:20px;color:var(--muted);font-size:15px}
+
+/* ============ المنهجية ============ */
+.checklist{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.checklist li{
+  display:flex;gap:12px;align-items:flex-start;background:#fff;
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:15.2px;
+}
+.checklist li::before{
+  content:"✓";flex:0 0 auto;width:24px;height:24px;border-radius:50%;
+  display:grid;place-items:center;background:var(--green);color:#fff;font-size:13px;margin-top:2px;
+}
+
+/* ============ سؤال الأسبوع + حديث اليوم ============ */
+.weekly{background:var(--green);color:#eaf4ef;border-radius:22px;padding:34px 28px;position:relative;overflow:hidden}
+.weekly::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 90% 10%,rgba(201,162,39,.22),transparent 45%);
+}
+.weekly>*{position:relative;z-index:1}
+.weekly h3{color:#fff;font-size:23px}
+.weekly p{color:#c9dbd2}
+.opts{display:grid;gap:10px;margin-top:18px}
+.opt{
+  text-align:start;font-family:inherit;font-size:15.2px;cursor:pointer;
+  padding:13px 16px;border-radius:13px;transition:.25s;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.22);color:#eaf4ef;
+}
+.opt:hover{background:rgba(255,255,255,.14);border-color:var(--gold-2)}
+.opt.chosen{background:rgba(226,192,90,.2);border-color:var(--gold-2);color:#fff}
+.result{
+  margin-top:18px;padding:18px;border-radius:14px;display:none;
+  background:rgba(255,255,255,.1);border:1px dashed rgba(226,192,90,.5);
+}
+.result.show{display:block;animation:pop .3s}
+.result .h{font-family:'Amiri',serif;font-size:19px;color:#fff;margin-bottom:8px}
+.result .s{font-size:13px;color:var(--gold-2)}
+
+.daily{display:flex;flex-direction:column;justify-content:center}
+.daily blockquote{
+  font-family:'Amiri',serif;font-size:19px;line-height:1.9;color:var(--green-2);
+  background:#f8f3e6;border-radius:14px;padding:16px 18px;margin:0 0 12px;
+  border-inline-start:4px solid var(--gold);
+}
+.daily .s{font-size:13.5px;color:var(--muted);margin-bottom:18px}
+
+/* ============ الفورم ============ */
+.form-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px 26px;box-shadow:var(--shadow)}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;color:var(--green)}
+.field input,.field textarea,.field select{
+  width:100%;font-family:inherit;font-size:15px;padding:12px 14px;border-radius:12px;
+  border:1px solid var(--line);background:#fdfaf2;color:var(--ink);transition:.2s;
+}
+.field input:focus,.field textarea:focus,.field select:focus{
+  outline:none;border-color:var(--gold);background:#fff;box-shadow:0 0 0 4px rgba(201,162,39,.14);
+}
+.field textarea{min-height:120px;resize:vertical}
+.hint{font-size:12.5px;color:var(--muted);margin-top:6px}
+
+/* ============ الفوتر ============ */
+.site-footer{background:var(--green-3);color:#c3d5cc;padding:52px 0 26px;margin-top:20px}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;margin-bottom:34px}
+.site-footer h4{color:#fff;font-size:18px;margin-bottom:12px}
+.site-footer p{font-size:14.3px;color:#a9bfb5;margin:0 0 8px}
+.site-footer a{color:#cfe2d9;text-decoration:none;font-size:14.3px;display:block;padding:3px 0;transition:.2s}
+.site-footer a:hover{color:var(--gold-2)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.12);padding-top:18px;
+  text-align:center;font-size:13px;color:#8ea79b;
+}
+
+/* ============ زر الرجوع + التوست ============ */
+.to-top{
+  position:fixed;inset-inline-start:22px;bottom:22px;z-index:70;
+  width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
+  background:var(--green);color:#fff;font-size:20px;display:grid;place-items:center;
+  opacity:0;visibility:hidden;transform:translateY(10px);transition:.3s;
+  box-shadow:0 10px 24px rgba(15,61,46,.3);
+}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+
+.toast{
+  position:fixed;bottom:26px;inset-inline:0;margin:auto;width:max-content;max-width:90%;
+  background:var(--green);color:#fff;padding:13px 22px;border-radius:999px;
+  font-size:14.5px;box-shadow:0 14px 34px rgba(0,0,0,.28);z-index:120;
+  opacity:0;transform:translateY(16px);transition:.35s;pointer-events:none;
+}
+.toast.show{opacity:1;transform:none}
+
+/* ============ الظهور عند التمرير ============ */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease, transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ الهيدر ============ -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="brand" href="#hero">
+      <span class="brand-mark">ن</span>
+      <span class="brand-text">نور السنة<small>من الحديث إلى الحياة</small></span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="التنقل الرئيسي">
+      <ul>
+        <li><a href="#hero" class="active">الرئيسية</a></li>
+        <li><a href="#about">عن المشروع</a></li>
+        <li><a href="#series">السلسلة</a></li>
+        <li><a href="#method">المنهجية</a></li>
+        <li><a href="#weekly">سؤال الأسبوع</a></li>
+        <li><a href="#contact">تواصل</a></li>
+      </ul>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ الهيرو ============ -->
+  <section class="hero" id="hero">
+    <div class="container hero-inner">
+      <span class="badge">مشروع دعوي متخصص في الحديث الشريف</span>
+      <h1>من <em>الحديث</em> إلى الحياة</h1>
+      <p class="lead">
+        مشروع موجّه للشباب الجامعي، يقدّم الحديث الصحيح بأسلوب عملي:
+        حديث واحد أسبوعيًا، شرح موجز، وأثر واحد تطبّقه في يومك —
+        ولا ننشر إلا ما صحّ عند أهل الحديث.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="#series">ابدأ السلسلة ←</a>
+        <a class="btn btn-ghost" href="#method">تعرّف على منهجنا</a>
+      </div>
+
+      <figure class="hero-hadith">
+        <blockquote>«لَأَنْ يَهْدِيَ اللهُ بِكَ رَجُلًا وَاحِدًا خَيْرٌ لَكَ مِنْ حُمْرِ النَّعَم»</blockquote>
+        <figcaption>متفق عليه — البخاري (٣٠٠٩)، مسلم (٢٤٠٦)</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ عن المشروع ============ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="kicker">عن المشروع</span>
+        <h2>ثلاثة أسس نبني عليها</h2>
+        <p>ليست الفكرة كثرة النشاط، بل صدق الرسالة ووضوح الطريق.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card" data-reveal>
+          <div class="icon">١</div>
+          <h3>الوعي بالمدعوّ</h3>
+          <p>نخاطب الشاب الجامعي بلغته واهتماماته ومشكلاته الحقيقية: السكن، الزملاء، الضغط الدراسي، والعلاقات — فالحديث يُقدَّم لحياة يعيشها فعلًا.</p>
+        </article>
+
+        <article class="card" data-reveal>
+          <div class="icon">٢</div>
+          <h3>وضوح الهدف وصغر البداية</h3>
+          <p>بدأنا بفريق صغير وخمسة منشورات فقط، ثم نتوسّع تدريجيًا. النموّ الهادئ أنفع من الانطلاقة الكبيرة التي تتوقف بعد شهر.</p>
+        </article>
+
+        <article class="card" data-reveal>
+          <div class="icon">٣</div>
+          <h3>البناء على رسالة لا على شكل</h3>
+          <p>الرسالة هي هداية الناس إلى الله، والموقع والمنشور والتصميم مجرد وسائل. متى تعارض الشكل مع الرسالة، قدّمنا الرسالة.</p>
+        </article>
+      </div>
+
+      <div class="stats" data-reveal>
+        <div class="stat"><b>٥</b><span>منشورات الانطلاق</span></div>
+        <div class="stat"><b>١٠٠٪</b><span>أحاديث صحيحة فقط</span></div>
+        <div class="stat"><b>١</b><span>حديث كل أسبوع</span></div>
+        <div class="stat"><b>١</b><span>أثر عملي لكل حديث</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ السلسلة ============ -->
+  <section class="section section-alt" id="series">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="kicker">السلسلة التمهيدية</span>
+        <h2>خمسة منشورات تفتح الطريق</h2>
+        <p>تُقرأ بالترتيب لمن يزور المشروع أول مرة: الهوية، ثم المكانة، ثم المنهج، ثم التطبيق، ثم ضوابط النشر.</p>
+      </div>
+
+      <div class="filters" data-reveal>
+        <button class="chip is-active" data-filter="all">الكل</button>
+        <button class="chip" data-filter="identity">الهوية</button>
+        <button class="chip" data-filter="place">مكانة السنة</button>
+        <button class="chip" data-filter="method">المنهج</button>
+        <button class="chip" data-filter="practice">عملي</button>
+      </div>
+
+      <div class="grid grid-3" id="postsGrid">
+
+        <!-- ١ -->
+        <article class="post card" data-cat="identity" data-reveal>
+          <div class="post-head"><span class="num">١</span><span class="tag">الهوية</span></div>
+          <h3>التعريف بالمشروع</h3>
+          <p class="excerpt">من نحن؟ وما الرؤية والرسالة والأسلوب الذي نعمل به؟ منشور تعريفي يضع الزائر في الصورة كاملة.</p>
+          <button class="link-btn" data-open>اقرأ التفصيل ←</button>
+          <div class="post-detail" hidden>
+            <blockquote>«الرؤية: أن يكون الحديث النبوي حاضرًا في يوم الطالب الجامعي»</blockquote>
+            <p><strong>الرؤية:</strong> أن يكون الحديث النبوي حاضرًا في يوم الطالب الجامعي: في محاضرته، وسكنه، وعلاقاته، وتعاملاته اليومية.</p>
+            <p><strong>الرسالة:</strong> هداية الناس إلى الله بالحديث الصحيح، بأسلوب يفهمه جيل الجامعة ولا يستثقله.</p>
+            <p><strong>الأسلوب:</strong> حديث واحد أسبوعيًا، شرح موجز، وأثر عملي واحد يطبّقه القارئ في يومه.</p>
+            <p><strong>الالتزام:</strong> لا ننشر إلا الحديث الذي صحّ سنده عند أهل العلم، مع ذكر المصدر ورقمه.</p>
+            <p class="src">ملاحظة: هذا المنشور تعريفي بالهوية، ولا يتضمّن نصًّا حديثيًا.</p>
+          </div>
+        </article>
+
+        <!-- ٢ -->
+        <article class="post card" data-cat="place" data-reveal>
+          <div class="post-head"><span class="num">٢</span><span class="tag">مكانة السنة</span></div>
+          <h3>مكانة السنة النبوية</h3>
+          <p class="excerpt">التأصيل الشرعي: لماذا نبدأ من الحديث؟ وما موقع السنة من الدين؟ مع حديث في فضل حمل السنة وتبليغها.</p>
+          <button class="link-btn" data-open>اقرأ التفصيل ←</button>
+          <div class="post-detail" hidden>
+            <blockquote>«نَضَّرَ اللهُ امرأً سَمِعَ مقالتي فَوَعاها فأدّاها كما سَمِعَها»</blockquote>
+            <p>السنة هي البيان العملي للقرآن، وهي الطريق الذي حفظ الله به فهم الدين على مرّ القرون. ومن هنا كان حمل السنة وتبليغها شرفًا ومسؤولية في الوقت نفسه.</p>
+            <p><strong>الدرس العملي:</strong> لا تنقل حديثًا إلا بعد أن تتيقّن من صحته، فحمل السنة ليس مجرد نشر نصّ، بل أمانة في النقل.</p>
+            <p class="src">المصدر: سنن الترمذي (٢٦٥٧)، وقال: حديث حسن صحيح.</p>
+          </div>
+        </article>
+
+        <!-- ٣ -->
+        <article class="post card" data-cat="method" data-reveal>
+          <div class="post-head"><span class="num">٣</span><span class="tag">المنهج</span></div>
+          <h3>إنما الأعمال بالنيات</h3>
+          <p class="excerpt">حديث المنهج الأول: يوضّح أن صلاح العمل يبدأ من النية، وأن كل منشور ننشره يجب أن يسبقه سؤال: لماذا؟</p>
+          <button class="link-btn" data-open>اقرأ التفصيل ←</button>
+          <div class="post-detail" hidden>
+            <blockquote>«إنَّما الأعمالُ بالنِّيَّاتِ، وإنَّما لكلِّ امرئٍ ما نَوى، فمن كانت هجرته إلى الله ورسوله فهجرته إلى الله ورسوله، ومن كانت هجرته لدنيا يصيبها أو امرأةٍ ينكحها فهجرته إلى ما هاجر إليه»</blockquote>
+            <p><strong>لماذا بدأنا بهذا الحديث؟</strong> لأنه يضبط بوصلة المشروع كله: الدعوة ليست شهرة ولا أرقام متابعين، بل نية صادقة قبل أي عمل.</p>
+            <p><strong>الدرس العملي:</strong> قبل أن تنشر حديثًا أو تكتب منشورًا، اسأل نفسك: لوجه الله أم لأجل الانطباع؟ فإن اختلطت النية، جدّدها.</p>
+            <p class="src">متفق عليه: البخاري (١)، مسلم (١٩٠٧).</p>
+          </div>
+        </article>
+
+        <!-- ٤ -->
+        <article class="post card" data-cat="practice" data-reveal>
+          <div class="post-head"><span class="num">٤</span><span class="tag">عملي</span></div>
+          <h3>المسلم من سلم المسلمون من لسانه ويده</h3>
+          <p class="excerpt">حديث يمسّ حياة الطالب الجامعي مباشرة: آداب التعامل في القاعة والسكن، وضبط اللسان في النقاش والخلاف.</p>
+          <button class="link-btn" data-open>اقرأ التفصيل ←</button>
+          <div class="post-detail" hidden>
+            <blockquote>«المسلمُ من سَلِمَ المسلمون من لسانِه ويدِه، والمهاجرُ من هجر ما نهى اللهُ عنه»</blockquote>
+            <p><strong>التطبيق في الجامعة:</strong> تعليق ساخر في مجموعة الكلية، أو نقل كلام عن زميل، أو مزاح ثقيل — كلها تدخل في هذا الحديث.</p>
+            <ul>
+              <li>لا تنشر صورة زميل أو تسجيلًا له دون إذنه.</li>
+              <li>إن اختلفت في نقاش، خاصم الفكرة لا الشخص.</li>
+              <li>احفظ لسانك في "الطُرَف" التي تجرح صاحبها.</li>
+            </ul>
+            <p class="src">متفق عليه: البخاري (١٠)، مسلم (٤٠).</p>
+          </div>
+        </article>
+
+        <!-- ٥ -->
+        <article class="post card" data-cat="method" data-reveal>
+          <div class="post-head"><span class="num">٥</span><span class="tag">المنهج</span></div>
+          <h3>ضوابط النشر والتحقق</h3>
+          <p class="excerpt">حديث التحذير من الكذب على النبي ﷺ، مع بيان منهجيتنا: المصدر، ورقم الحديث، وحكم المحدّثين، والمراجعة قبل النشر.</p>
+          <button class="link-btn" data-open>اقرأ التفصيل ←</button>
+          <div class="post-detail" hidden>
+            <blockquote>«من كَذَبَ عليَّ مُتعمِّدًا فَلْيَتَبَوَّأْ مَقعدَه من النار»</blockquote>
+            <p><strong>منهجنا في النشر:</strong></p>
+            <ul>
+              <li>لا ننشر حديثًا إلا بعد التأكد من صحته عند أهل الحديث.</li>
+              <li>نذكر الكتاب ورقم الحديث مع كل نصّ ننشره.</li>
+              <li>لا ننشر الفتاوى، بل نعرض الحديث وشرحه، ونسأل أهل العلم عند الإشكال.</li>
+              <li>كل نصّ يُراجع قبل النشر، ولا يُنشر شيء بلا مراجعة.</li>
+            </ul>
+            <p><strong>الدرس العملي:</strong> قبل إعادة نشر أي حديث على واتساب أو تويتر، تحقّق من مصدره؛ فإعادة النشر مشاركة في المسؤولية.</p>
+            <p class="src">متفق عليه: البخاري (١٠٧)، مسلم (٣).</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ المنهجية ============ -->
+  <section class="section" id="method">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="kicker">المنهجية</span>
+        <h2>كيف نتعامل مع الحديث؟</h2>
+        <p>هذه الصفحة هي مصدر الثقة في المشروع: ماذا ننشر، وكيف نتحقق، وما الذي نتجنّبه.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div data-reveal>
+          <ul class="checklist">
+            <li><span><strong>المصدر:</strong> لا ننشر إلا ما صحّ سنده عند أهل الحديث.</span></li>
+            <li><span><strong>التوثيق:</strong> نذكر الكتاب ورقم الحديث في كل منشور بلا استثناء.</span></li>
+            <li><span><strong>عدم التوسّع:</strong> لا نُصدر فتاوى، ونسأل أهل العلم عند الإشكال.</span></li>
+            <li><span><strong>المراجعة:</strong> كل نصّ يُراجع قبل النشر، ولا ننشر بلا مراجعة.</span></li>
+            <li><span><strong>التصحيح العلني:</strong> إن وقع خطأ، نصحّحه بوضوح ونعتذر.</span></li>
+          </ul>
+        </div>
+
+        <div class="card daily" data-reveal>
+          <h3 style="color:var(--green);font-size:21px">حديث عابر… جرّبه</h3>
+          <blockquote id="dailyText">…</blockquote>
+          <p class="s" id="dailySrc">…</p>
+          <button class="btn btn-green" id="nextHadith" style="align-self:flex-start">حديث آخر ↻</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ سؤال الأسبوع ============ -->
+  <section class="section section-alt" id="weekly">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="kicker">تفاعل</span>
+        <h2>سؤال الأسبوع</h2>
+        <p>سؤال من واقع حياة الطالب الجامعي، وجوابه من حديث صحيح.</p>
+      </div>
+
+      <div class="weekly" data-reveal>
+        <h3>زميلك في السكن الجامعي أغضبك بشدة… ما أول خطوة تفعلها؟</h3>
+        <p>اختر أقرب تصرّف إليك، وسنعرض لك توجيه الحديث:</p>
+
+        <div class="opts" id="weeklyOpts">
+          <button class="opt" data-comment="الردّ الفوري في لحظة الغضب غالبًا يضاعف المشكلة، والحديث يوجّه إلى ضبط النفس أولًا.">أردّ عليه فورًا وأبيّن له خطأه</button>
+          <button class="opt" data-comment="هذا هو التوجيه النبوي: قوة المؤمن في ملك نفسه عند الغضب، لا في الانتصار للذات.">أسكت وأترك المكان حتى أهدأ ثم أراجع الموقف</button>
+          <button class="opt" data-comment="الشكوى قد تكون مشروعة أحيانًا، لكنها ليست الخطوة الأولى؛ التهدئة ثم الحوار أنفع وأقرب للسنة.">أشتكي عليه مباشرة إلى إدارة السكن</button>
+        </div>
+
+        <div class="result" id="weeklyResult">
+          <p class="h" id="weeklyHadith">«ليس الشديدُ بالصُّرَعة، إنما الشديدُ الذي يَملِكُ نفسَه عند الغضب»</p>
+          <p id="weeklyComment" style="margin:0;color:#dbe9e2"></p>
+          <p class="s">متفق عليه: البخاري (٦١١٤)، مسلم (٢٦٠٩).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ تواصل ============ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="kicker">تواصل</span>
+        <h2>أرسل سؤالك أو ملاحظتك</h2>
+        <p>نقرأ كل رسالة، ونجيب عمّا نستطيع، ونحوّل ما يحتاج فتوى إلى أهل العلم.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <form class="form-card" id="askForm" data-reveal novalidate>
+          <div class="field">
+            <label for="name">الاسم (اختياري)</label>
+            <input type="text" id="name" name="name" placeholder="مثال: عبد الله">
+          </div>
+
+          <div class="field">
+            <label for="email">البريد الإلكتروني *</label>
+            <input type="email" id="email" name="email" required placeholder="name@example.com">
+          </div>
+
+          <div class="field">
+            <label for="type">نوع الرسالة</label>
+            <select id="type" name="type">
+              <option value="question">سؤال عن حديث</option>
+              <option value="suggest">اقتراح حديث عملي</option>
+              <option value="correct">تصحيح خطأ في منشور</option>
+              <option value="join">أرغب بالانضمام للفريق</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">نص الرسالة *</label>
+            <textarea id="message" name="message" required placeholder="اكتب رسالتك بوضوح…"></textarea>
+            <p class="hint">تنبيه: هذه نسخة تجريبية بلا خادم، فالرسالة تُحفظ محليًا فقط.</p>
+          </div>
+
+          <button type="submit" class="btn btn-green">إرسال ←</button>
+        </form>
+
+        <div data-reveal>
+          <div class="card" style="margin-bottom:18px">
+            <div class="icon">ﷺ</div>
+            <h3>قبل أن ترسل</h3>
+            <p>إن كان سؤالك عن صحة حديث، اذكر نصّه ومصدره إن أمكن؛ فهذا يسرّع الجواب ويدقّقه.</p>
+          </div>
+          <div class="card">
+            <div class="icon">✦</div>
+            <h3>انضم للفريق</h3>
+            <p>نحتاج من يجيد: كتابة المحتوى، التدقيق في التخريج، التصميم، أو تحرير الفيديو. البداية صغيرة، والنموّ تدريجي.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ الفوتر ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>نور السنة</h4>
+        <p>مشروع دعوي متخصص في الحديث الشريف، موجّه للشباب الجامعي، يلتزم بالأحاديث الصحيحة فقط.</p>
+      </div>
+      <div>
+        <h4>روابط سريعة</h4>
+        <a href="#about">عن المشروع</a>
+        <a href="#series">السلسلة التمهيدية</a>
+        <a href="#method">المنهجية</a>
+        <a href="#weekly">سؤال الأسبوع</a>
+      </div>
+      <div>
+        <h4>تذكير</h4>
+        <p>«لَأَنْ يَهْدِيَ اللهُ بِكَ رَجُلًا وَاحِدًا خَيْرٌ لَكَ مِنْ حُمْرِ النَّعَم»</p>
+        <p style="font-size:13px;color:#8ea79b">متفق عليه</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> نور السنة — الموقع وسيلة، والرسالة هي الهداية.
+    </div>
+  </div>
+</footer>
+
+<!-- ============ المودال ============ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="تفصيل المنشور">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="إغلاق">×</button>
+    <div class="modal-body"></div>
+  </div>
+</div>
+
+<button class="to-top" id="toTop" aria-label="الرجوع للأعلى">↑</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =========================================================
+   1) قائمة الجوال + التنقل النشِط
+   ========================================================= */
+const header    = document.querySelector('.site-header');
+const navToggle = document.getElementById('navToggle');
+const nav       = document.getElementById('mainNav');
+
+navToggle.addEventListener('click', () => {
+  const open = header.classList.toggle('nav-open');
+  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+
+nav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    header.classList.remove('nav-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  });
+});
+
+/* تحديد الرابط النشط أثناء التمرير */
+const sections = [...document.querySelectorAll('main section[id]')];
+const navLinks = [...nav.querySelectorAll('a')];
+
+const spyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+    });
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+
+sections.forEach(sec => spyObserver.observe(sec));
+
+/* =========================================================
+   2) ظهور العناصر عند التمرير
+   ========================================================= */
+const revealEls = document.querySelectorAll('[data-reveal]');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach((el, i) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = Math.min(i * 60, 300) + 'ms';
+  revealObserver.observe(el);
+});
+
+/* =========================================================
+   3) فلترة منشورات السلسلة
+   ========================================================= */
+const chips = document.querySelectorAll('.chip');
+const posts = document.querySelectorAll('.post');
+
+chips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('is-active'));
+    chip.classList.add('is-active');
+
+    const filter = chip.dataset.filter;
+    posts.forEach(post => {
+      const show = filter === 'all' || post.dataset.cat === filter;
+      post.style.display = show ? '' : 'none';
+      if (show) {
+        post.classList.remove('in');
+        requestAnimationFrame(() => post.classList.add('in'));
+      }
+    });
+  });
+});
+
+/* =========================================================
+   4) المودال (تفصيل المنشور)
+   ========================================================= */
+const modal      = document.getElementById('modal');
+const modalBody  = modal.querySelector('.modal-body');
+const modalClose = modal.querySelector('.modal-close');
+
+function openModal(html) {
+  modalBody.innerHTML = html;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  modalClose.focus();
+}
+
+function closeModal() {
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('[data-open]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card  = btn.closest('.post');
+    const title = card.querySelector('h3').textContent;
+    const detail = card.querySelector('.post-detail').innerHTML;
+    openModal(`<h3>${title}</h3>${detail}`);
+  });
+});
+
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+});
+
+/* =========================================================
+   5) حديث عابر (يتغير بضغطة زر)
+   ========================================================= */
+const hadiths = [
+  { t: 'المسلمُ من سَلِمَ المسلمون من لسانِه ويدِه', s: 'متفق عليه: البخاري (١٠)، مسلم (٤٠)' },
+  { t: 'من كان يؤمن بالله واليوم الآخر فليقل خيرًا أو ليصمت', s: 'متفق عليه: البخاري (٦٠١٨)، مسلم (٤٧)' },
+  { t: 'لا يؤمن أحدُكم حتى يحبَّ لأخيه ما يحبُّ لنفسه', s: 'متفق عليه: البخاري (١٣)، مسلم (٤٥)' },
+  { t: 'اتّقِ اللهَ حيثما كنتَ، وأتبِعِ السيئةَ الحسنةَ تمحُها، وخالِقِ الناسَ بخلُقٍ حسن', s: 'رواه الترمذي (١٩٨٧) وحسّنه' },
+  { t: 'الدينُ النصيحة', s: 'رواه مسلم (٥٥)' },
+  { t: 'إنما الأعمالُ بالنيات، وإنما لكلِّ امرئٍ ما نوى', s: 'متفق عليه: البخاري (١)، مسلم (١٩٠٧)' },
+  { t: 'من كذَبَ عليَّ متعمِّدًا فليتبوَّأْ مقعدَه من النار', s: 'متفق عليه: البخاري (١٠٧)، مسلم (٣)' }
+];
+
+const dailyText = document.getElementById('dailyText');
+const dailySrc  = document.getElementById('dailySrc');
+let hadithIndex = 0;
+
+function renderHadith() {
+  const h = hadiths[hadithIndex % hadiths.length];
+  dailyText.textContent = '«' + h.t + '»';
+  dailySrc.textContent  = h.s;
+}
+renderHadith();
+
+document.getElementById('nextHadith').addEventListener('click', () => {
+  hadithIndex++;
+  renderHadith();
+});
+
+/* =========================================================
+   6) سؤال الأسبوع
+   ========================================================= */
+const opts         = document.querySelectorAll('.opt');
+const weeklyResult = document.getElementById('weeklyResult');
+const weeklyComment= document.getElementById('weeklyComment');
+
+opts.forEach(opt => {
+  opt.addEventListener('click', () => {
+    opts.forEach(o => o.classList.remove('chosen'));
+    opt.classList.add('chosen');
+    weeklyComment.textContent = opt.dataset.comment;
+    weeklyResult.classList.add('show');
+  });
+});
+
+/* =========================================================
+   7) الفورم (نسخة تجريبية بلا خادم)
+   ========================================================= */
+const form  = document.getElementById('askForm');
+const toast = document.getElementById('toast');
+let toastTimer;
+
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3800);
+}
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const email   = form.email.value.trim();
+  const message = form.message.value.trim();
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showToast('يرجى إدخال بريد إلكتروني صحيح ✉️');
+    form.email.focus();
+    return;
+  }
+  if (!message) {
+    showToast('يرجى كتابة نص الرسالة ✍️');
+    form.message.focus();
+    return;
+  }
+
+  // هنا يمكن لاحقًا ربط الطلب بخادم أو خدمة نماذج.
+  showToast('تم تسجيل رسالتك محليًا ✅ (نسخة تجريبية — اربطها بخادم لاحقًا)');
+  form.reset();
+});
+
+/* =========================================================
+   8) زر الرجوع للأعلى + السنة في الفوتر
+   ========================================================= */
+const toTop = document.getElementById('toTop');
+
+window.addEventListener('scroll', () => {
+  toTop.classList.toggle('show', window.scrollY > 500);
+}, { passive: true });
+
+toTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
